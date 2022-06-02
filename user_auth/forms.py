@@ -2,6 +2,9 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm #UserCreationForm -> username', 'password1', 'password2'
 from django.contrib.auth.models import User
 
+
+# username password email first_name last_name
+
 from user_auth.models import UserProfile
 
 class SignUpForm(UserCreationForm):
