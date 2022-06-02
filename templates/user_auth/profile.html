@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+<!-- {% load crispy_forms_tags %} -->
+<!-- {% load static %} -->
+{% block title_block %} PROFILE{% endblock %}
+{% block linkcss %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}"> {% endblock %}
+
+{% block body %}
+
+<h2>Your Profile</h2>
+{% if user.user_profile %}
+<img src="/media/{{ user.user_profile.profile_pic }}" class="rounded-circle" width="100" ">
+<br><br>
+<a href=" {% url 'user_auth:add_pro_pic' %}" class="btn btn-info">Add Profile picture</a>
+<br><br>
+<a href="{% url 'user_auth:change_pro_pic' %}" class="btn btn-info">Change Profile picture</a>
+{% else %}
+<img src="/media/profile_pics/avatar-male.jpg" class="rounded-circle border border-dark" width="100"
+    alt="user_profile_pic">
+<br><br>
+<a href="{% url 'user_auth:add_pro_pic' %}" class="btn btn-info">Add Profile Picture</a>
+<br><br>
+<a href="{% url 'user_auth:change_pro_pic' %}" class="btn btn-info">Change Profile picture</a>
+<br><br>
+{% endif %}
+<br><br>
+<h4>{{ user.first_name }} {{ user.last_name }}</h4>
+<br>
+<b>Username:</b> {{user.username}}
+<br>
+<b>Email:</b> {{ user.email }}</p>
+<br>
+<a href="{% url 'user_auth:user_profile_change' %}" class="btn btn-primary">CHANGE PROFILE</a>
+
+{% endblock %}
